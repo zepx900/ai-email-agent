@@ -1,6 +1,6 @@
-# AI Email Agent
+# Enhanced AI Email Agent
 
-A Python script for an AI agent that can respond to emails, check emails, and draft new emails.
+A Python script for an AI agent that can respond to emails, check emails, and draft new emails with improved correctness, functionality, performance, security, and fault tolerance.
 
 ## Features
 
@@ -9,12 +9,17 @@ A Python script for an AI agent that can respond to emails, check emails, and dr
 - **Email Composition**: Create and send new emails with AI-generated content
 - **Email Drafting**: Draft emails without sending them
 - **Auto-Reply**: Automatically respond to incoming emails
+- **Enhanced Security**: Encrypted credential storage and secure connections
+- **Improved Performance**: Caching, connection pooling, and performance metrics
+- **Fault Tolerance**: Comprehensive error handling, retry logic, and health checks
+- **Command-line Interface**: Both interactive and argument-based modes
 
 ## Requirements
 
 - Python 3.6+
 - OpenAI API key for AI response generation
 - Email account with IMAP and SMTP access
+- Required packages (see requirements.txt)
 
 ## Installation
 
@@ -38,6 +43,8 @@ A Python script for an AI agent that can respond to emails, check emails, and dr
 
 ## Usage
 
+### Interactive Mode
+
 Run the script:
 ```
 python ai_email_agent.py
@@ -50,7 +57,28 @@ The script will guide you through the following options:
 3. **Process emails with auto-reply**: Generate AI responses and automatically send replies
 4. **Compose new email**: Create and send a new email with AI-generated content
 5. **Draft email**: Generate an email draft without sending it
-6. **Exit**: Close all connections and exit the program
+6. **Show performance metrics**: Display statistics about the agent's performance
+7. **Exit**: Close all connections and exit the program
+
+### Command-line Arguments
+
+You can also use command-line arguments for non-interactive usage:
+
+```
+python ai_email_agent.py --check                      # Check for unread emails
+python ai_email_agent.py --process                    # Process emails without replying
+python ai_email_agent.py --reply                      # Process emails and auto-reply
+python ai_email_agent.py --compose --to user@example.com --prompt "Schedule a meeting" # Compose email
+python ai_email_agent.py --draft --prompt "Proposal for new project"  # Draft an email
+python ai_email_agent.py --metrics                    # Show performance metrics
+```
+
+Additional options:
+- `--to`: Recipient email address for compose mode
+- `--subject`: Email subject for compose mode
+- `--prompt`: Content prompt for compose or draft mode
+- `--cc`: CC recipients for compose mode (comma-separated)
+- `--limit`: Maximum number of emails to process
 
 ## Configuration
 
@@ -62,20 +90,36 @@ On first run, you'll be prompted to enter your email configuration:
 - IMAP port (default: 993)
 - SMTP port (default: 587)
 
-This information will be saved to `email_config.ini` for future use.
+This information will be securely stored in `email_config.ini` for future use.
+
+## Security Features
+
+- Credentials are encrypted in the configuration file
+- Secure file permissions for the configuration file
+- TLS encryption for email connections
+- Input validation to prevent injection attacks
+- Option to use environment variables for sensitive data
+
+## Performance Optimizations
+
+- Connection pooling and reuse
+- Caching for repeated operations
+- Exponential backoff for retries
+- Performance metrics tracking
+
+## Fault Tolerance
+
+- Comprehensive error handling
+- Automatic reconnection on failure
+- Fallback mechanisms for AI generation
+- Health checks for all components
+- Detailed logging for troubleshooting
 
 ## Gmail Setup
 
 If you're using Gmail, you'll need to:
 1. Enable "Less secure app access" or
 2. Use an "App Password" if you have 2-factor authentication enabled
-
-## Security Note
-
-Your email password is stored in the configuration file. For better security:
-- Ensure the file has appropriate permissions
-- Consider using environment variables instead
-- Use an app-specific password rather than your main account password
 
 ## License
 
